@@ -868,6 +868,8 @@ class DiseaseModel(object):
                 self.queue.push(
                     (tau, 'expo', j, infector, site), priority=tau)
                 sampled_event = True
+        # Google hacking
+        self.__apply_for_testing(tau, j)
 
     def __push_household_exposure_events(self, t, infector, base_rate):
         """
