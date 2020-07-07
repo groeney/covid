@@ -154,28 +154,28 @@ class DiseaseModel(object):
         }
 
         self.state_started_at = {
-            'susc': - np.inf * np.ones(self.n_people, dtype='float'),
-            'expo': np.inf * np.ones(self.n_people, dtype='float'),
-            'ipre': np.inf * np.ones(self.n_people, dtype='float'),
-            'isym': np.inf * np.ones(self.n_people, dtype='float'),
-            'iasy': np.inf * np.ones(self.n_people, dtype='float'),
-            'posi': np.inf * np.ones(self.n_people, dtype='float'),
-            'nega': np.inf * np.ones(self.n_people, dtype='float'),
-            'resi': np.inf * np.ones(self.n_people, dtype='float'),
-            'dead': np.inf * np.ones(self.n_people, dtype='float'),
-            'hosp': np.inf * np.ones(self.n_people, dtype='float'),
+            'susc': -1 * np.ones(self.n_people, dtype='float'),
+            'expo': -1 * np.ones(self.n_people, dtype='float'),
+            'ipre': -1 * np.ones(self.n_people, dtype='float'),
+            'isym': -1 * np.ones(self.n_people, dtype='float'),
+            'iasy': -1 * np.ones(self.n_people, dtype='float'),
+            'posi': -1 * np.ones(self.n_people, dtype='float'),
+            'nega': -1 * np.ones(self.n_people, dtype='float'),
+            'resi': -1 * np.ones(self.n_people, dtype='float'),
+            'dead': -1 * np.ones(self.n_people, dtype='float'),
+            'hosp': -1 * np.ones(self.n_people, dtype='float'),
         }
         self.state_ended_at = {
-            'susc': np.inf * np.ones(self.n_people, dtype='float'),
-            'expo': np.inf * np.ones(self.n_people, dtype='float'),
-            'ipre': np.inf * np.ones(self.n_people, dtype='float'),
-            'isym': np.inf * np.ones(self.n_people, dtype='float'),
-            'iasy': np.inf * np.ones(self.n_people, dtype='float'),
-            'posi': np.inf * np.ones(self.n_people, dtype='float'),
-            'nega': np.inf * np.ones(self.n_people, dtype='float'),
-            'resi': np.inf * np.ones(self.n_people, dtype='float'),
-            'dead': np.inf * np.ones(self.n_people, dtype='float'),
-            'hosp': np.inf * np.ones(self.n_people, dtype='float'),
+            'susc': -1 * np.ones(self.n_people, dtype='float'),
+            'expo': -1 * np.ones(self.n_people, dtype='float'),
+            'ipre': -1 * np.ones(self.n_people, dtype='float'),
+            'isym': -1 * np.ones(self.n_people, dtype='float'),
+            'iasy': -1 * np.ones(self.n_people, dtype='float'),
+            'posi': -1 * np.ones(self.n_people, dtype='float'),
+            'nega': -1 * np.ones(self.n_people, dtype='float'),
+            'resi': -1 * np.ones(self.n_people, dtype='float'),
+            'dead': -1 * np.ones(self.n_people, dtype='float'),
+            'hosp': -1 * np.ones(self.n_people, dtype='float'),
         }   
         self.outcome_of_test = np.zeros(self.n_people, dtype='bool')
 
