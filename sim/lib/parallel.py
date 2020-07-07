@@ -46,6 +46,10 @@ class ParallelSummary(object):
         self.site_loc = site_loc
         self.home_loc = home_loc
         self.dynamic_tracing = dynamic_tracing
+
+        # Google hacking
+        self.google_contacts = []
+        self.tests = []
        
         self.state = {
             'susc': np.ones((repeats, n_people), dtype='bool'),
@@ -140,6 +144,8 @@ def pp_launch(r, kwargs, distributions, params, initial_counts, testing_params, 
         'children_count_iasy': sim.children_count_iasy,
         'children_count_ipre': sim.children_count_ipre,
         'children_count_isym': sim.children_count_isym,
+        'google_contacts': sim.mob.google_contacts,
+        'tests': sim.tests,
     }
     if STORE_MOB:
         result['mob'] = sim.mob
@@ -199,5 +205,9 @@ def launch_parallel_simulations(mob_settings, distributions, random_repeats, cpu
         summary.children_count_iasy[r, :] = result['children_count_iasy']
         summary.children_count_ipre[r, :] = result['children_count_ipre']
         summary.children_count_isym[r, :] = result['children_count_isym']
+
+        # Google hacking
+        summary.google_contacts.append(result['google_contacts'])        
+        summary.tests.append(result['tests'])
 
     return summary

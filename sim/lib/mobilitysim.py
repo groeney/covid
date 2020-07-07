@@ -35,6 +35,9 @@ Contact = namedtuple('Contact', (
     'id_tup'    # tuple of `id`s of visits of `indiv_i` and `indiv_j`
 ))
 
+GoogleContact = namedtuple('GoogleContact', (
+    't_from', 't_to', 'indiv_i', 'indiv_j', 'site_id', 'duration'))
+
 # Tuple representing an interval for back-operability with previous version
 # using pandas.Interval objects
 Interval = namedtuple('Interval', ('left', 'right'))
@@ -327,6 +330,7 @@ class MobilitySimulator:
         seed = seed or rd.randint(0, 2**32 - 1)
         rd.seed(seed)
         np.random.seed(seed-1)
+        self.google_contacts = []
         
         synthetic = (num_people is not None and num_sites is not None and mob_rate_per_type is not None and
                     dur_mean is not None and num_age_groups is not None)
@@ -620,6 +624,16 @@ class MobilitySimulator:
                                         id_tup=(v.id, v_inf.id),
                                         site=s,
                                         duration=c_t_to - c_t_from)
+                            
+                            if not for_all_individuals: 
+                                gc = GoogleContact(
+                                    indiv_i=c.indiv_i,
+                                    indiv_j=c.indiv_j,
+                                    site_id=c.site,
+                                    duration=c.duration,
+                                    t_from=c.t_from,
+                                    t_to=c.t_to)
+                                self.google_contacts.append(gc)
 
                             # Add it to interlap
                             if for_all_individuals:

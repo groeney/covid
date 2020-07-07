@@ -10,6 +10,7 @@ import scipy as sp
 import os, math
 import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
+from collections import namedtuple
 
 from lib.priorityqueue import PriorityQueue
 from lib.measures import (MeasureList, BetaMultiplierMeasureBySite,
@@ -21,6 +22,9 @@ from lib.measures import (MeasureList, BetaMultiplierMeasureBySite,
     ComplianceForAllMeasure, SocialDistancingForKGroups)
 
 TO_HOURS = 24.0
+
+# Describes a testing event and its outcome.
+Test = namedtuple('Test', ('individual_id', 'time', 'outcome'))
 
 class DiseaseModel(object):
     """
@@ -43,6 +47,9 @@ class DiseaseModel(object):
             instead of using the previously filled contact array
 
         """
+
+        self.exposures = []
+        self.tests = []
 
         # cache settings
         self.mob = mob
@@ -1008,6 +1015,8 @@ class DiseaseModel(object):
         """
         Test person `i` at time `t`
         """
+        test = Test(individual_id=i, time=t, outcome=self.outcome_of_test[i])
+        self.tests.append(test)
         
         # collect test result based on "blood sample" taken before via `outcome_of_test`
         # ... if positive
