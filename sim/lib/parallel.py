@@ -123,6 +123,7 @@ def create_ParallelSummary_from_DiseaseModel(sim):
 
 def pp_launch(r, kwargs, distributions, params, initial_counts, testing_params, measure_list, max_time, dynamic_tracing):
 
+    assert(type(measure_list) == MeasureList)
     mob = MobilitySimulator(**kwargs)
     mob.simulate(max_time=max_time, dynamic_tracing=dynamic_tracing)
 

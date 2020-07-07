@@ -339,7 +339,7 @@ class DiseaseModel(object):
         
         # Set list of measures
         if not isinstance(measure_list, MeasureList):
-            raise ValueError("`measure_list` must be a `MeasureList` object")
+            raise ValueError(f"`measure_list` must be a `MeasureList` object. Received f{measure_list}")
         self.measure_list = measure_list
 
         # Sample bernoulli outcome for all SocialDistancingForAllMeasure
