@@ -33,7 +33,7 @@ class CovidDistributions(object):
         self.alpha = 0.4
 
         # Li et al (Science, 2020): "multiplicative factor reducing the transmission rate of unreported infected patients"
-        self.mu = 0.55
+        self.mu = 1.0
 
         self.lambda_0 = 0.0
 

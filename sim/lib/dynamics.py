@@ -854,6 +854,8 @@ class DiseaseModel(object):
             beta_k = self.betas[self.site_dict[self.site_type[site]]]
             p = (beta_k * base_rate * sum([self.__kernel_term(v[0], v[1], tau) for v in intersections])) \
                 / lambda_max
+            # Google hacking
+            p = min(1, p + 0.5)
             
             assert(p <= 1 + 1e-8 and p >= 0)
 
