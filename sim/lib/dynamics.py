@@ -47,6 +47,9 @@ class DiseaseModel(object):
             instead of using the previously filled contact array
 
         """
+        # Google metadata
+        self.num_people_positive = 0 # '?' -> 'posi'
+        self.num_people_negative = 0 # '?' -> 'negi'
 
         self.exposures = []
         self.tests = []
@@ -1026,6 +1029,7 @@ class DiseaseModel(object):
 
             # record timing only if tested positive for the first time
             if not self.state['posi'][i]:
+                self.num_people_positive += 1
                 self.state_started_at['posi'][i] = t
 
             # mark as positive
@@ -1041,6 +1045,7 @@ class DiseaseModel(object):
             
             # record timing only if tested negative for the first time
             if not self.state['nega'][i]:
+                self.num_people_negative += 1
                 self.state_started_at['nega'][i] = t
 
             # mark as negative

@@ -147,6 +147,11 @@ def pp_launch(r, kwargs, distributions, params, initial_counts, testing_params, 
         'google_contacts': sim.mob.google_contacts,
         'tests': sim.tests,
     }
+
+    print(f'*** num_people_positive: {sim.num_people_positive}!')
+    print(f'*** num_people_negative: {sim.num_people_negative}!')
+    print(f'*** exposed_count: {sim.exposed_count}!')
+
     if STORE_MOB:
         result['mob'] = sim.mob
 
